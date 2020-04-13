@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/WTBacon/todo-app-gin/routers"
 
 	"github.com/WTBacon/todo-app-gin/config"
 	"github.com/WTBacon/todo-app-gin/models"
@@ -18,7 +19,8 @@ func main() {
 	if err != nil {
 		fmt.Println("Can't connect DB! Error:", err)
 	}
-
 	config.DB.AutoMigrate(&models.Todo{})
 
+	r := routers.SetUpRouter()
+	r.Run()
 }

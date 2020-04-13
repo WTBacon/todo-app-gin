@@ -34,9 +34,9 @@ func CreateTodo(todo *Todo) error {
 	return nil
 }
 
-func UpdateTodo(todo *Todo, id string) error {
+func UpdateTodo(todo *Todo) error {
 	fmt.Println(*todo)
-	config.DB.Save(todo)
+	config.DB.Model(todo).Update(todo)
 	return nil
 }
 
